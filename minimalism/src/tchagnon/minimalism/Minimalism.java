@@ -25,7 +25,7 @@ public class Minimalism implements ApplicationListener {
     private Vector3 touchPos;
 
     @Override
-    public void create() {		
+    public void create() {
         w = Gdx.graphics.getWidth();
         h = Gdx.graphics.getHeight();
 

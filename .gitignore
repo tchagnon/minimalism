@@ -44,3 +44,6 @@ Desktop.ini
 
 # libGDX
 libs/
+gen/
+war/
+gwt-unitCache/
