@@ -3,21 +3,12 @@ package tchagnon.minimalism.shapes;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import com.badlogic.gdx.math.Rectangle;
 
-public class Line extends Shape {
-    public float lineWidth = 1;
-    private Rectangle shape = new Rectangle();
-
+public class Circle extends Shape {
+    
     @Override
     public void update(float deltaTime, boolean paused) {
         super.update(deltaTime, paused);
-        shape.x = position.x;
-        shape.y = position.y;
-        shape.height = size;
-        shape.width = lineWidth;
-        boundingBox.width = Math.max(5, lineWidth);
-        boundingBox.x = position.x + shape.width/2 - boundingBox.width/2;
     }
 
     @Override
@@ -26,7 +17,9 @@ public class Line extends Shape {
         shapeRenderer.begin(ShapeType.Filled);
         shapeRenderer.setProjectionMatrix(camera.combined);
         shapeRenderer.setColor(color);
-        shapeRenderer.rect(shape.x, shape.y, shape.width, shape.height);
+        shapeRenderer.translate(size/2, size/2, 0);
+        shapeRenderer.circle(position.x, position.y, size/2, 36);
+        shapeRenderer.identity();
         shapeRenderer.end();
     }
 

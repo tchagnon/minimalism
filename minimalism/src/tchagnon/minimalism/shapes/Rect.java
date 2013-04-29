@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Rectangle;
 
-public class Line extends Shape {
+public class Rect extends Shape {
     public float lineWidth = 1;
     private Rectangle shape = new Rectangle();
 

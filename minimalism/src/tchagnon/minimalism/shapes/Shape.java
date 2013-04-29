@@ -1,8 +1,11 @@
 package tchagnon.minimalism.shapes;
 
+import tchagnon.minimalism.Minimalism;
+
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
@@ -14,7 +17,7 @@ public abstract class Shape {
     public Vector2 position = new Vector2(0, 0);
     public Vector2 velocity = new Vector2(0, 0);
     public Rectangle boundingBox = new Rectangle();
-    private static final float boundingBoxMargin = 1;
+    private static final float boundingBoxMargin = 5;
 
     public void update(float deltaTime, boolean paused) {
         if (!paused) {
@@ -27,5 +30,14 @@ public abstract class Shape {
         boundingBox.width = boundingBox.height = size + boundingBoxMargin*2;
     }
 
-    public abstract void render(Camera camera, ShapeRenderer shapeRenderer);
+    public void render(Camera camera, ShapeRenderer shapeRenderer) {
+        // render bounding box
+        if (Minimalism.DEBUG) {
+            shapeRenderer.begin(ShapeType.Line);
+            shapeRenderer.setProjectionMatrix(camera.combined);
+            shapeRenderer.setColor(Color.LIGHT_GRAY);
+            shapeRenderer.rect(boundingBox.x, boundingBox.y, boundingBox.width, boundingBox.height);
+            shapeRenderer.end();
+        }
+    }
 }
