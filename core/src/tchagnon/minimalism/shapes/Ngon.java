@@ -25,7 +25,7 @@ public class Ngon extends Shape {
     public void render(Camera camera, ShapeRenderer shapeRenderer) {
         super.render(camera, shapeRenderer);
         // doesn't work
-        mesh.render(GL20.GL_TRIANGLES, 0, 3);
+        mesh.render(null, GL20.GL_TRIANGLES, 0, 3);
         /*
         shapeRenderer.begin(ShapeType.Line);
         shapeRenderer.setProjectionMatrix(camera.combined);
